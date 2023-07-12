@@ -1,14 +1,18 @@
+import React, { useState } from "react";
+
 const Content = () => {
-  function displayText() {
-    var textareaValue = document.getElementById("textarea").value;
-    document.getElementById("output").textContent = textareaValue;
-  }
+  const [displayText, setDisplayText] = useState("");
+
+  const input = () => {
+    const textareaValue = document.getElementById("textarea").value;
+    setDisplayText(textareaValue);
+  };
 
   return (
     <div>
-      <textarea id="textarea" rows="4" cols="50"></textarea>
-      <button onclick="displayText()">Display Text</button>
-      <div id="output" class="output"></div>
+      <textarea id="textarea" rows="4" cols="50" />
+      <button onClick={input}>Show Text</button>
+      {displayText && <p>{displayText}</p>}
     </div>
   );
 };
